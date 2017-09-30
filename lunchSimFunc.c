@@ -24,8 +24,8 @@ void runSimulation(PNODE* head, unsigned char numLunches, char* outputFileName)
 	}
 
 	unsigned char i;
-	PNODE** linkedLists = malloc(sizeof(PNODE*));
-	linkedLists[0] = head;
+	PNODE** linkedLists = &head;
+	linkedLists[1] = NULL; // lunchers
 
 	if(numLunches < 2) // assert with error message?
 	{
@@ -61,7 +61,6 @@ void runSimulation(PNODE* head, unsigned char numLunches, char* outputFileName)
 		unsigned char numLunchers = (rand() % (maxNumLunchers - 1)) + 2; // at least two, max maxNumLunchers
 
 		PNODE* lunchers = NULL;
-		linkedLists[1] = lunchers;
 
 		// build up luncher list for this lunch
 		for(j = 0; j < numLunchers; j++)
@@ -73,6 +72,7 @@ void runSimulation(PNODE* head, unsigned char numLunches, char* outputFileName)
 
 			head = linkedLists[0];
 			lunchers = linkedLists[1];
+			free(linkedLists);
 		}
 
 		// determine payer

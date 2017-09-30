@@ -148,7 +148,7 @@ PNODE** transferNode(unsigned char index, PNODE* from, PNODE* to)
 {
 	assert(getLength(from) >= index);
 
-	PNODE** results = malloc(sizeof(PNODE*));
+	PNODE** results = malloc(sizeof(PNODE*) * 2);
 
 	// ----- transfer actually occurs here -----
 	PNODE* target;
